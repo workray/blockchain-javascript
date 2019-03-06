@@ -175,10 +175,6 @@ app.post("/register-nodes-bulk", function(req, res) {
   res.json({ note: "Bulk registration successful." });
 });
 
-app.listen(port, function() {
-  console.log(`listening on port ${port}...`);
-});
-
 app.get("/consensus", function(req, res) {
   const requestPromises = [];
   bitcoin.networkNodes.forEach(networkNodeUrl => {
@@ -248,4 +244,8 @@ app.get("/address/:address", function(req, res) {
 
 app.get("/block-explorer", function(req, res) {
   res.sendFile("./block-explorer/index.html", { root: __dirname });
+});
+
+app.listen(port, function() {
+  console.log(`listening on port ${port}...`);
 });
